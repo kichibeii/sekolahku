@@ -106,22 +106,42 @@
 		
 		<div class="row">
 			<div class="col-xs-12 col-md-24 col-lg-12">
-				<p>Pilih tahun masuk</p>
-				<?php 
-					$tahun = date("Y") ;
-					$bulan = date("m");
-					if ($bulan>6){
-						$tahun = $tahun+1;
-					}
-				?>
-				<form action="daftarmurid2.php" method="post">
-					<select name="tahun_masuk">
-						<option value = "<?php $tahun = $tahun -1 ; echo $tahun;?>"><?php echo $tahun;?></option>
-						<option value = "<?php $tahun = $tahun -1 ; echo $tahun;?>"><?php echo $tahun;?></option>						
-						<option value = "<?php $tahun = $tahun -1 ; echo $tahun;?>"><?php echo $tahun;?></option>
-					</select>
-						<input type="submit" value="oke">
- 				</form>
+				<table class="table">
+					<thead>
+						<td>Id</td>
+						<td>Nama</td>
+						<td>NIP</td>
+						<td>Password</td>
+						<td>Status Wali Kelas</td>
+						<td>Status Penilaian Sikap</td>
+					</thead>
+					<?php 
+						$query=mysqli_query($connect,"SELECT * FROM guru");
+						while ($data = mysqli_fetch_array($query)){
+					?>
+					<tr>
+						<td><?php echo $data['id_guru'];?></td>
+						<td><?php echo $data['nama_guru'];?></td>
+						<td><?php echo $data['nip'];?></td>
+						<td><?php echo $data['password'];?></td>
+						<td><?php 
+							if ($data['status_wali']==1) 
+								echo "V";
+							else 
+								echo "X";
+
+						 ?></td>
+						<td><?php 
+							if ($data['status_sikap']==1) 
+								echo "V";
+							else 
+								echo "X";
+
+						 ?></td>
+					</tr>
+					<?php }?>
+				</table>
+
 			</div>
 		
 		</div><!--/.row-->
