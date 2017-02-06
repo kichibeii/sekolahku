@@ -36,10 +36,6 @@
 			<li><a href="daftarmutpel.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Mata Pelajaran</a></li>
 			<li><a href="daftarkelas.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Kelas</a></li>
 			<li><a href="daftaralumni.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Alumni</a></li>
-			<li><a href="charts.html"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
-			<li><a href="forms.html"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>
-			<li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
-			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
 			<li class="parent ">
 				<a href="#">
 					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 

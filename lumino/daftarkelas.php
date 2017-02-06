@@ -65,6 +65,7 @@
 					<?php }?>
 				</table>
 				<a href="ubahwalikelas.php"><button type="button" class="btn btn-default">Ubah Wali Kelas</button></a>
+				<a href="importdatakelas.php"><button type="button" class="btn btn-default">Import Data Siswa</button></a>
 			</div>
 		
 		</div><!--/.row-->
