@@ -69,7 +69,7 @@
 		$data3=mysqli_fetch_array($query3);
 	?>
 		<input name="id_mapel" value="<?php echo $data3['id_mapel'] ?>" hidden>
-		<input name="tahunajaran" value="<?php echo $ta ?>" hidden>
+		<!-- <input name="tahunajaran" value="<?php echo $ta ?>" hidden> -->
 		<input name="id_ag" value="<?php echo $id_ag ?>" hidden>
 		<input type="submit" name="" value="NEXT">
 	</form>
