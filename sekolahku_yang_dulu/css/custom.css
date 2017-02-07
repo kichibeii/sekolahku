@@ -1,0 +1,359 @@
+.roboto {
+	font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.main-header {
+	background-color: #D52C25;
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 999;
+}
+
+.main-header .row {
+	margin-right: 0px;
+}
+
+.header-brand {
+	text-align: center;
+	padding: 10px 0;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #B20000;
+	color: #fff;
+}
+
+.header-brand img {
+	height: 30px;
+	margin-right: 5px;
+}
+
+#side-toogle {
+	text-align: left;
+}
+
+#side-toggle i {
+	color: #fff;
+	font-size: 20px;
+	padding: 13px 0;
+}
+
+.nama-user {
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	float: right;
+	padding-top: 10px;
+}
+
+.nama-user:hover, .nama-user:focus {
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav li a {
+	font-family: 'Roboto', sans-serif;
+}
+
+.nav li a:hover,
+.nav li a:focus {
+	background-color: #B20000;
+}
+
+.nav .open a, .nav .open a:focus, .nav .open a:hover {
+	background-color: #B20000;
+}
+
+.navbar-right a, .mobile-nav a {
+	color: #fff;
+}
+
+.nav-tabs li a {
+	color: #000;
+}
+
+.nav-tabs li a:hover {
+	color: #fff;
+}
+
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
+.maindata {
+	background-color: #fff;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.semester {
+	background-color: #D52C25;
+	padding: 5px 0px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.semester h4 {
+	margin: 0;
+	color: #fff;
+}
+
+.form-login {
+	background-color: #fff;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	margin-top: 150px;
+	border: 1px solid #D52C25;
+	border-radius: 10px;
+}
+
+.form-login .gambaratas {
+	text-align: center;
+	margin-top: -60px;
+}
+
+.form-login .gambaratas img {
+	width: 25%;
+}
+
+.form-login label span {
+	padding-left: 5px;
+}
+
+.judul-login {
+	background-color: #D52C25;
+	margin-top: -70px;
+	margin-bottom: 40px;
+	margin-right: -10px;
+	border-radius: 10px 10px 0px 0px;
+	padding: 10px 40px;
+}
+
+.judul-login h3 {
+	margin: 0px;
+	font-weight: bold;
+}
+
+.judul-login h3 span {
+	float: right;
+}
+
+.btn-fons {
+	padding-left: 30px;
+}
+
+.btn-fons button {
+	width: 100%;
+	background-color: #D52C25;
+	border-color: #fff;
+	margin-top: 20px;
+}
+
+.btn-fons button:hover {
+	background-color: #B20000;
+}
+
+.utama {
+	width: 100%;
+}
+
+#main-sidebar {
+	width: 215px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.profil {
+	background: url(../img/bg-sidebar.png) no-repeat;
+	width: 100%;
+	height: 130px;
+	padding-top: 60px;
+	border-bottom: 2px solid #D52C25;
+	margin-bottom: 5px;
+}
+
+.profil img {
+	border: 3px solid #aaa;
+	border-radius: 50%;
+	width: 47px;
+	margin-top: 2px;
+}
+
+.tebel {
+	font-weight: bold;
+}
+
+.profil p {
+	margin: 0 0 0 5px;
+	font-size: 12px;
+}
+
+.menukiri ul {
+	list-style-image: url(../img/bulletlist.png) ;
+}
+
+.menukiri ul li {
+	font-size: 16px;
+	color: #000;
+	text-decoration: none;
+	padding: 5px 0px;
+}
+
+.menukiri ul a:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.menukiri ul li:hover {
+	border-right: 3px solid #D52C25;
+	border-radius: 5px;
+}
+
+#main-content {
+	width: 100%;
+	background-color: #e5e5e5;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 215px;
+}
+
+.coverpic {
+	padding-top: 50px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.coverpic img {
+	width: 100%;
+}
+
+.glyphatas {
+	color: #D52C25;
+	font-size: 50px;
+	float: left;
+	padding-top: 10px;
+	opacity: 0.5;
+}
+
+.glyphatas i {
+	margin: 0;
+}
+
+.judulpage {
+	background-color: #fff;
+	padding-top: 45px;
+	padding-right: 0px;
+	padding-left: 20px;
+	padding-bottom: 83px;
+	border-bottom: 1px solid #000;
+}
+
+.judulpage h2 {
+	float: left;
+	padding-left: 10px;
+	padding-top: 3px;
+}
+
+.remahroti {
+	background-color: #fff;
+	padding-left: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #000;
+}
+
+.remahroti p {
+	margin: 0;
+}
+
+.nilaisiswa {
+	position: relative;
+}
+
+
+@media (min-width: 768px) {
+	.nama-user {
+		display: none;
+	}
+
+	.mobile-only {
+		display: none;
+	}
+}
+
+@media (max-width: 992px) {
+	#side-toggle i {
+		padding: 15px 0;
+		margin-left: 10px;
+	}
+}
+
+@media (max-width: 768px) {
+	.desktop-only {
+		display: none;
+	}
+
+	.navbar-right {
+		display: none;
+	}
+
+	.mobile-nav {
+		margin: 0px;
+		float: right;
+	}
+
+	#side-toggle i {
+		padding: 10px 0;
+		margin-left: 10px;
+	}
+
+	.dropdown {
+		text-align: right;
+	}
+
+	.profil {
+		padding-top: 100px;
+		height: 170px;
+	}
+
+	.coverpic {
+		padding-top: 90px;
+	}
+
+	#main-content {
+		left: 0;
+	}
+
+	.btn-fons {
+		padding-left: 25px;
+	}
+
+	.form-login label span {
+	    padding-left: 15px;
+	    padding-top: 8px;
+	}
+
+	.form-login .gambaratas {
+		margin-top: -30px;
+		margin-bottom: 25px;
+	}
+
+	.judul-login {
+		padding: 10px 20px;
+		margin-bottom: 20px;
+	}
+
+	.judul-login h3 {
+		font-size: 16px;
+	}
+}
