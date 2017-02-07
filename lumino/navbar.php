@@ -36,6 +36,7 @@
 			<li><a href="daftarmutpel.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Mata Pelajaran</a></li>
 			<li><a href="daftarkelas.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Kelas</a></li>
 			<li><a href="daftaralumni.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Alumni</a></li>
+			<li><a href="siswaguru.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Siswa dan Guru</a></li>
 			<li class="parent ">
 				<a href="#">
 					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 

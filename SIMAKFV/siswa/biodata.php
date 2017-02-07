@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  include 'connect.php';
+  $nis = $_SESSION['nis'];
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +84,11 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
-                <span>Wawan Setyadi</span>
+                <?php 
+                  $query=mysqli_query($connect,"SELECT * FROM siswa WHERE nis = '$nis'");
+                  $data=mysqli_fetch_array($query);
+                ?>
+                <span><?php echo $data['nama_siswa'];?></span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-down pull-right"></i>
                 </span>
@@ -88,8 +98,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Guru/Siswa
-                    <small>Angkatan</small>
+                    <?php echo $data['nama_siswa'];?> - Siswa
+                    <small<?php echo $data['tahun_masuk']; ?></small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -112,8 +122,8 @@
             <img src="../dist/img/user.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Wawan Setyadi</p>
-            <a href="#">NIS</a>
+            <p><?php echo $data['nama_siswa'];?></p>
+            <a href="#"><?php echo $data['nis'];?></a>
           </div>
         </div>
         <!-- Sidebar menu -->
@@ -159,7 +169,7 @@
                         <tr>
                           <td><b>Nama Murid</b></td>
                           <td> : </td>
-                          <td>Wawan Setyadi</td>
+                          <td><?php echo $data['nama_siswa'];?></td>
                         </tr>
                         <tr>
                           <td><b>Jenis Kelamin</b></td>

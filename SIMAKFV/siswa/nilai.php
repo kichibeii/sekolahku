@@ -1,3 +1,28 @@
+<?php 
+  session_start();
+  $nis = $_SESSION['nis'];
+  include 'connect.php';
+  $query = mysqli_query($connect,"SELECT * FROM siswa WHERE nis = '$nis'");
+  $data = mysqli_fetch_array($query);
+  $id_siswa = $data['id_siswa'];
+  $tahun_sekarang = date("Y");
+  $bulan = date("m");
+  $perbedaan_tahun = $tahun_sekarang - $data['tahun_masuk'];
+  if ($perbedaan_tahun==0 && $bulan > 6){
+    $semester = 1;
+  }else if ($perbedaan_tahun==1 && $bulan <= 6){
+    $semester = 2;
+  }else if ($perbedaan_tahun==1 && $bulan > 6){
+    $semester = 3;
+  }else if ($perbedaan_tahun==2 && $bulan <= 6){
+    $semester = 4;
+  }else if ($perbedaan_tahun==2 && $bulan > 6){
+    $semester = 5;
+  }else if ($perbedaan_tahun==3 && $bulan <= 6){
+    $semester = 6;
+  }
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +103,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
-                <span>Wawan Setyadi</span>
+                <span><?php echo $data['nama_siswa'];?></span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-down pull-right"></i>
                 </span>
@@ -88,8 +113,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Guru/Siswa
-                    <small>Angkatan</small>
+                    <?php echo $data['nama_siswa'];?> - Siswa
+                    <small><?php echo $data['tahun_masuk'];?></small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -112,8 +137,8 @@
             <img src="../dist/img/user.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Wawan Setyadi</p>
-            <a href="#">NIS</a>
+            <p><?php echo $data['nama_siswa'];?></p>
+            <a href="#"><?php echo $data['nis'];?></a>
           </div>
         </div>
         <!-- Sidebar menu -->
@@ -142,16 +167,59 @@
       <section class="content">
         <div class="row">
           <section class="col-lg-12">
-            <!-- Biodata -->
+            
+            <?php 
+                $query2 = mysqli_query($connect,"SELECT * FROM ambil_siswa WHERE id_siswa = '$id_siswa' AND semester = '$semester'");
+                while($data2=mysqli_fetch_array($query2)){
+                  $id_ambil_siswa = $data2['id_ambil_siswa'];
+                  $id_mapel  = $data2['id_mapel'];
+                  $query3=mysqli_query($connect,"SELECT * FROM mapel WHERE id_mapel = '$id_mapel'");
+                  $data3=mysqli_fetch_array($query3);
+            ?>
+            <!-- Tabel Nilai -->
             <div class="box box-solid box-danger">
               <div class="box-header">
                 <i class="fa fa-user"></i>
-                <h3 class="box-title">Tabel Nilai</h3>
+                <h3 class="box-title"><?php echo $data3['nama_mapel']; ?></h3>
               </div>
               <div class="box-body">
-                Bikin tabel disini.
+              <table class="table">
+                <thead>
+                <?php 
+                    $query4 = mysqli_query($connect,"SELECT * FROM ajar WHERE id_ambil_siswa = '$id_ambil_siswa' AND semester = '$semester'");
+                    $data4 = mysqli_fetch_array($query4);
+                    $id_ajar = $data4['id_ajar'];
+                    $query5 = mysqli_query($connect,"SELECT * FROM nilai WHERE id_ajar = '$id_ajar'");
+                    while ($data5=mysqli_fetch_array($query5)){
+                ?>
+                      <td><?php 
+                          if ($data5['jenis']=='H')
+                            echo "UH";
+                          else if ($data5['jenis']=='T')
+                            echo "UTS";
+                          else if ($data5['jenis']=='A')
+                      ?></td>       
+                 
+                 <?php } ?>
+                </thead>
+                <tr>
+                  <?php 
+                    $query4 = mysqli_query($connect,"SELECT * FROM ajar WHERE id_ambil_siswa = '$id_ambil_siswa' AND semester = '$semester'");
+                    $data4 = mysqli_fetch_array($query4);
+                    $id_ajar = $data4['id_ajar'];
+                    $query5 = mysqli_query($connect,"SELECT * FROM nilai WHERE id_ajar = '$id_ajar'");
+                    while ($data5=mysqli_fetch_array($query5)){
+                ?>
+                      <td><?php echo $data5['nilai'];?></td>       
+                 
+                 <?php } ?>
+                </tr>
+                 </table>
               </div>
             </div>
+            
+            <?php }?>
+
           </section>
         </div>
       </section>
