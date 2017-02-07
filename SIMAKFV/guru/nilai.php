@@ -1,4 +1,23 @@
 <!DOCTYPE html>
+<?php 
+    include '../connect.php'; 
+
+    if ($_SESSION['status'] != "guru") {
+      if ($_SESSION['status'] == "siswa") {
+        header('Location:../siswa/index.php');
+      }
+      else {
+        header('Location:../index.php');
+      }
+    }
+
+    $id_guru = $_SESSION['id'];
+    $query = mysqli_query($connect, "SELECT * FROM guru WHERE id_guru = '$id_guru'");
+    $result = mysqli_fetch_array($query);
+
+    $buffer=0;
+
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -79,7 +98,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
-                <span>Wawan Setyadi</span>
+                <span><?php echo $result['nama_guru']?></span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-down pull-right"></i>
                 </span>
@@ -89,8 +108,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Guru
-                    <small>Tahun Ajar</small>
+                    <?php echo $result['nama_guru']?> - Guru
+                    <small><?php echo $result['nip']?></small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -113,8 +132,8 @@
             <img src="../dist/img/user.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Wawan Setyadi</p>
-            <a href="#">NIP</a>
+            <p><?php echo $result['nama_guru']?></p>
+            <a href="#"><?php echo $result['nip']?></a>
           </div>
         </div>
         <!-- Sidebar menu -->
@@ -151,6 +170,29 @@
               </div>
               <div class="box-body">
                 Bikin form disini.
+                <form method="POST" action="lihatnilai.php">
+                  <select name="id_ag" required>
+                    <option disabled selected value="">Mata Pelajaran</option>
+                    <?php 
+
+                      $query1=mysqli_query($connect,"SELECT * FROM ambil_guru WHERE id_guru = '$id_guru'");
+                      while ($data1=mysqli_fetch_array($query1)){
+                        $id_mapel=$data1['id_mapel'];
+                        if($id_mapel==$buffer){
+                          continue;
+                        }
+                        $query2=mysqli_query($connect, "SELECT * FROM mapel WHERE id_mapel='$id_mapel'");
+                        $data2=mysqli_fetch_array($query2);
+                    ?>
+                    <option value="<?php echo $data1['id_ambil_guru'] ?>"><?php echo $data2['nama_mapel']?></option>
+                    <?php
+                        $buffer=$id_mapel;
+                        }
+                    ?>
+                  </select><br>
+                  
+                  <input type="submit" name="" value="NEXT">
+                  </form>
               </div>
             </div>
           </section>

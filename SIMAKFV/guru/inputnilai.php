@@ -1,4 +1,30 @@
 <!DOCTYPE html>
+<?php 
+    include '../connect.php'; 
+
+    if ($_SESSION['status'] != "guru") {
+      if ($_SESSION['status'] == "siswa") {
+        header('Location:../siswa/index.php');
+      }
+      else {
+        header('Location:../index.php');
+      }
+    }
+
+    $id_kelas=$_POST['id_kelas'];
+    $jenis=$_POST['jenis'];
+    $id_mapel=$_POST['id_mapel'];
+    $id_ag=$_POST['id_ag'];
+
+    $counter=0;
+
+    $id_guru = $_SESSION['id'];
+    $query = mysqli_query($connect, "SELECT * FROM guru WHERE id_guru = '$id_guru'");
+    $result = mysqli_fetch_array($query);
+
+
+
+ ?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -79,7 +105,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
-                <span>Wawan Setyadi</span>
+                <span><?php echo $result['nama_guru']?></span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-down pull-right"></i>
                 </span>
@@ -89,8 +115,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Guru
-                    <small>Tahun Ajar</small>
+                    <?php echo $result['nama_guru']?> - Guru
+                    <small><?php echo $result['nip']?></small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -113,8 +139,8 @@
             <img src="../dist/img/user.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Wawan Setyadi</p>
-            <a href="#">NIP</a>
+            <p><?php echo $result['nama_guru']?></p>
+            <a href="#"><?php echo $result['nip']?></a>
           </div>
         </div>
         <!-- Sidebar menu -->
@@ -151,6 +177,40 @@
               </div>
               <div class="box-body">
                 Bikin form disini.
+                <form method="POST" action="inputnilaiproses.php">
+                  <table>
+                    <tr>
+                      <td>Nama Siswa</td>
+                      <td>Nilai</td>
+                    </tr>
+                  <?php
+                    $query1=mysqli_query($connect, "SELECT * FROM siswa WHERE id_kelas='$id_kelas'");
+                    while($data1=mysqli_fetch_array($query1)){
+                      $id_siswa=$data1['id_siswa'];
+
+                      $query2=mysqli_query($connect, "SELECT * FROM ambil_siswa WHERE id_siswa='$id_siswa' AND id_mapel='$id_mapel' AND status='0'");
+                      $data2=mysqli_fetch_array($query2);
+                      $id_as=$data2['id_ambil_siswa'];
+                      
+                      $query3=mysqli_query($connect, "SELECT * FROM ajar WHERE id_ambil_siswa = '$id_as' AND id_ambil_guru='$id_ag' ");
+                      $data3=mysqli_fetch_array($query3);
+                      $id_ajar=$data3['id_ajar'];
+                  ?>
+                    <tr>
+                      <td><?php echo $data1['nama_siswa']?></td>
+                      <td><input type="number" name="data<?php echo $counter; ?>" min="0" max="100" required></td>
+                      <input name="id_ajar<?php echo $counter;?>" value="<?php echo $id_ajar;?>" hidden>
+                    </tr>
+                  <?php
+                    $counter=$counter+1;
+                    }
+                  ?>
+                  </table>
+                  <input name="id_ag" value="<?php echo $id_ag ?>" hidden>
+                  <input name="counter" value="<?php echo $counter?>" hidden>
+                  <input name="jenis" value="<?php echo $jenis?>" hidden>
+                  <input type="submit" value="submit">
+                </form>
               </div>
             </div>
           </section>

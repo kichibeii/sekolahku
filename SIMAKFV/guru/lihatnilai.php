@@ -1,4 +1,26 @@
 <!DOCTYPE html>
+<?php 
+    include '../connect.php'; 
+
+    if ($_SESSION['status'] != "guru") {
+      if ($_SESSION['status'] == "siswa") {
+        header('Location:../siswa/index.php');
+      }
+      else {
+        header('Location:../index.php');
+      }
+    }
+
+    $id_guru = $_SESSION['id'];
+    $query = mysqli_query($connect, "SELECT * FROM guru WHERE id_guru = '$id_guru'");
+    $result = mysqli_fetch_array($query);
+
+    $id_ag=$_POST['id_ag'];
+    $buffer=array("0","0");
+    $countarray=0;
+    $i=0;
+
+?>
 <html>
 <head>
   <meta charset="utf-8">
@@ -79,7 +101,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
-                <span>Wawan Setyadi</span>
+                <span><?php echo $result['nama_guru']?></span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-down pull-right"></i>
                 </span>
@@ -89,8 +111,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Guru
-                    <small>Tahun Ajar</small>
+                    <?php echo $result['nama_guru']?> - Guru
+                    <small><?php echo $result['nip']?></small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -113,8 +135,8 @@
             <img src="../dist/img/user.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Wawan Setyadi</p>
-            <a href="#">NIP</a>
+            <p><?php echo $result['nama_guru']?></p>
+            <a href="#"><?php echo $result['nip']?></a>
           </div>
         </div>
         <!-- Sidebar menu -->
@@ -151,6 +173,58 @@
               </div>
               <div class="box-body">
                 Bikin tabel disini.
+                <form method="POST" action="lihatnilai2.php">
+                  <select name="semester">
+                    <option disabled="" selected="">Semester...</option>
+                <?php 
+                    $query2=mysqli_query($connect, "SELECT * FROM ajar WHERE id_ambil_guru='$id_ag' ");
+                    while($data2=mysqli_fetch_array($query2)){
+                      $semester=$data2['semester'];
+                      for($i=0; $i<$countarray; $i++){
+                        if($semester=$buffer[$i]){
+                          goto label1;
+                        }
+                      }
+
+                ?>
+                    <option value="<?php echo $data2['semester']?>"><?php echo $data2['semester'] ?></option>
+                <?php
+                    $buffer[$countarray]=$semester;
+                    $countarray++;
+                    break;
+                    label1:
+                  }
+                  $countarray=0;
+                  $buffer=array("0","0");
+                ?>
+                  </select>
+
+                
+                    <select name="id_kelas">
+                <?php
+                  $query1=mysqli_query($connect, "SELECT * FROM kelas");
+                  while($data1=mysqli_fetch_array($query1)){
+                    $id_kelas=$data1['id_kelas'];
+                    $nama_kelas=$data1['nama_kelas'];
+                ?>
+
+                    <option value="<?php echo $id_kelas?>"><?php echo $nama_kelas?></option>
+
+                <?php
+                  }
+                ?>
+
+                  </select>
+                  <br>
+                <?php 
+                  $query3=mysqli_query($connect, "SELECT * FROM ambil_guru WHERE id_ambil_guru=$id_ag");
+                  $data3=mysqli_fetch_array($query3);
+                ?>
+                  <input name="id_mapel" value="<?php echo $data3['id_mapel'] ?>" hidden>
+                  <!-- <input name="tahunajaran" value="<?php echo $ta ?>" hidden> -->
+                  <input name="id_ag" value="<?php echo $id_ag ?>" hidden>
+                  <input type="submit" name="" value="NEXT">
+                </form>
               </div>
             </div>
           </section>
