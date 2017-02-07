@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SMA Fons Vitae 1 Matsudirini | Jakarta Timur</title>
+  <link rel="shortcut icon" type="image/png" href="../dist/img/logo-lg.png">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -88,7 +89,7 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Guru/Siswa
+                    Wawan Setyadi - Siswa
                     <small>Angkatan</small>
                   </p>
                 </li>
@@ -135,7 +136,7 @@
         <h1>Rekapitulasi Studi</h1>
       </div>
       <div class="bread-section">
-        <a href="#">SIMAK </a><span>> </span>Rekapitulasi Studi
+        <a href="index.php">SIMAK </a><span>> </span>Rekapitulasi Studi
       </div>
 
       <!-- Main content -->

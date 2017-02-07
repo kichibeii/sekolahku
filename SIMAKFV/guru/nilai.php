@@ -89,8 +89,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Siswa
-                    <small>Angkatan</small>
+                    Wawan Setyadi - Guru
+                    <small>Tahun Ajar</small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -114,7 +114,7 @@
           </div>
           <div class="pull-left info">
             <p>Wawan Setyadi</p>
-            <a href="#">NIS</a>
+            <a href="#">NIP</a>
           </div>
         </div>
         <!-- Sidebar menu -->
@@ -123,7 +123,7 @@
           <li><a href="index.php"><i class="fa fa-circle-o"></i> Beranda</a></li>
           <li><a href="biodata.php"><i class="fa fa-circle-o"></i> Biodata</a></li>
           <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Lihat Nilai</a></li>
-          <li><a href="rekap.php"><i class="fa fa-circle-o"></i> Rekapitulasi Studi</a></li>
+          <li><a href="input.php"><i class="fa fa-circle-o"></i> Input Nilai</a></li>
         </ul>
       </section>
     </aside>
@@ -133,10 +133,10 @@
       <!-- Content Header -->
       <div class="header-section">
         <i class="glyphicon glyphicon-education pull-right"></i>
-        <h1>Lihat Nilai</h1>
+        <h1>Filter Nilai</h1>
       </div>
       <div class="bread-section">
-        <a href="index.php">SIMAK </a><span>> </span>Lihat Nilai
+        <a href="index.php">SIMAK </a><span>> </span>Filter Nilai
       </div>
 
       <!-- Main content -->
@@ -147,10 +147,10 @@
             <div class="box box-solid box-danger">
               <div class="box-header">
                 <i class="fa fa-user"></i>
-                <h3 class="box-title">Tabel Nilai</h3>
+                <h3 class="box-title">Filter Nilai</h3>
               </div>
               <div class="box-body">
-                Bikin tabel disini.
+                Bikin form disini.
               </div>
             </div>
           </section>

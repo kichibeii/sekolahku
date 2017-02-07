@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SMA Fons Vitae 1 Matsudirini | Jakarta Timur</title>
+  <link rel="shortcut icon" type="image/png" href="../dist/img/logo-lg.png">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -88,7 +89,7 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Guru/Siswa
+                    Wawan Setyadi - Siswa
                     <small>Angkatan</small>
                   </p>
                 </li>
@@ -132,10 +133,10 @@
       <!-- Content Header -->
       <div class="header-section">
         <i class="glyphicon glyphicon-education pull-right"></i>
-        <h1>Biodata Murid</h1>
+        <h1>Biodata Siswa</h1>
       </div>
       <div class="bread-section">
-        <a href="#">SIMAK </a><span>> </span>Biodata
+        <a href="index.php">SIMAK </a><span>> </span>Biodata
       </div>
 
       <!-- Main content -->
@@ -146,7 +147,7 @@
             <div class="box box-solid box-danger">
               <div class="box-header">
                 <i class="fa fa-user"></i>
-                <h3 class="box-title">Profil Murid</h3>
+                <h3 class="box-title">Profil Siswa</h3>
               </div>
               <div class="box-body">
                 <div class="col-sm-12 col-lg-3 foto">
@@ -157,7 +158,7 @@
                     <div class="box-body">
                       <table class="table table-striped">
                         <tr>
-                          <td><b>Nama Murid</b></td>
+                          <td><b>Nama Siswa</b></td>
                           <td> : </td>
                           <td>Wawan Setyadi</td>
                         </tr>

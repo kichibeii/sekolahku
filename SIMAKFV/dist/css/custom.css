@@ -2,6 +2,19 @@
 *  Custom CSS  *
 ***************/
 
+.main-login {
+	background: url(../img/bg-login.jpg);
+}
+
+.login-box-body {
+	border: 2px solid #ccc;
+	border-radius: 5px;
+}
+
+.login-logo a b {
+	color: #d73925;
+}
+
 .cover > img {
 	width: 100%;
 }

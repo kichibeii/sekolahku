@@ -89,8 +89,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Siswa
-                    <small>Angkatan</small>
+                    Wawan Setyadi - Guru
+                    <small>Tahun Ajar</small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -114,44 +114,50 @@
           </div>
           <div class="pull-left info">
             <p>Wawan Setyadi</p>
-            <a href="#">NIS</a>
+            <a href="#">NIP</a>
           </div>
         </div>
         <!-- Sidebar menu -->
         <ul class="sidebar-menu">
           <li class="header">MENU UTAMA</li>
-          <li><a href="index.php"><i class="fa fa-circle-o"></i> Beranda</a></li>
+          <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Beranda</a></li>
           <li><a href="biodata.php"><i class="fa fa-circle-o"></i> Biodata</a></li>
-          <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Lihat Nilai</a></li>
-          <li><a href="rekap.php"><i class="fa fa-circle-o"></i> Rekapitulasi Studi</a></li>
+          <li><a href="nilai.php"><i class="fa fa-circle-o"></i> Lihat Nilai</a></li>
+          <li><a href="input.php"><i class="fa fa-circle-o"></i> Input Nilai</a></li>
         </ul>
       </section>
     </aside>
 
     <!-- Content Wrapper -->
     <div class="content-wrapper">
+      <!-- Cover Image -->
+      <div class="cover">
+        <img class="hidden-xs" src="../dist/img/coverpic.png">
+      </div>
+      
       <!-- Content Header -->
-      <div class="header-section">
-        <i class="glyphicon glyphicon-education pull-right"></i>
-        <h1>Lihat Nilai</h1>
-      </div>
-      <div class="bread-section">
-        <a href="index.php">SIMAK </a><span>> </span>Lihat Nilai
-      </div>
+      <section class="content-header">
+        <h1>Beranda</h1>
+        <ol class="breadcrumb">
+          <li><a href="index.php"><i class="fa fa-dashboard"></i> SIMAK</a></li>
+          <li class="active">Beranda</li>
+        </ol>
+      </section>
 
       <!-- Main content -->
       <section class="content">
         <div class="row">
           <section class="col-lg-12">
-            <!-- Biodata -->
-            <div class="box box-solid box-danger">
-              <div class="box-header">
-                <i class="fa fa-user"></i>
-                <h3 class="box-title">Tabel Nilai</h3>
+            <!-- Pengumuman -->
+            <div class="box box-danger">
+              <div class="box-header with-border">
+                <i class="fa fa-paperclip"></i>
+                <h3 class="box-title">Pengumuman</h3>
               </div>
               <div class="box-body">
-                Bikin tabel disini.
+                <center>Tidak ada pengumanan baru.</center>
               </div>
+              <div class="box-footer clearfix no-border"></div>
             </div>
           </section>
         </div>

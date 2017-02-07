@@ -89,8 +89,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-                    Wawan Setyadi - Siswa
-                    <small>Angkatan</small>
+                    Wawan Setyadi - Guru
+                    <small>Tahun Ajar</small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -114,16 +114,16 @@
           </div>
           <div class="pull-left info">
             <p>Wawan Setyadi</p>
-            <a href="#">NIS</a>
+            <a href="#">NIP</a>
           </div>
         </div>
         <!-- Sidebar menu -->
         <ul class="sidebar-menu">
           <li class="header">MENU UTAMA</li>
           <li><a href="index.php"><i class="fa fa-circle-o"></i> Beranda</a></li>
-          <li><a href="biodata.php"><i class="fa fa-circle-o"></i> Biodata</a></li>
-          <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Lihat Nilai</a></li>
-          <li><a href="rekap.php"><i class="fa fa-circle-o"></i> Rekapitulasi Studi</a></li>
+          <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Biodata</a></li>
+          <li><a href="nilai.php"><i class="fa fa-circle-o"></i> Lihat Nilai</a></li>
+          <li><a href="input.php"><i class="fa fa-circle-o"></i> Input Nilai</a></li>
         </ul>
       </section>
     </aside>
@@ -133,10 +133,10 @@
       <!-- Content Header -->
       <div class="header-section">
         <i class="glyphicon glyphicon-education pull-right"></i>
-        <h1>Lihat Nilai</h1>
+        <h1>Biodata Guru</h1>
       </div>
       <div class="bread-section">
-        <a href="index.php">SIMAK </a><span>> </span>Lihat Nilai
+        <a href="index.php">SIMAK </a><span>> </span>Biodata
       </div>
 
       <!-- Main content -->
@@ -147,10 +147,55 @@
             <div class="box box-solid box-danger">
               <div class="box-header">
                 <i class="fa fa-user"></i>
-                <h3 class="box-title">Tabel Nilai</h3>
+                <h3 class="box-title">Profil Guru</h3>
               </div>
               <div class="box-body">
-                Bikin tabel disini.
+                <div class="col-sm-12 col-lg-3 foto">
+                  <img src="../dist/img/user.png">
+                </div>
+                <div class="col-sm-12 col-lg-9">
+                  <div class="box box-danger">
+                    <div class="box-body">
+                      <table class="table table-striped">
+                        <tr>
+                          <td><b>Nama Guru</b></td>
+                          <td> : </td>
+                          <td>Wawan Setyadi</td>
+                        </tr>
+                        <tr>
+                          <td><b>Jenis Kelamin</b></td>
+                          <td> : </td>
+                          <td>Laki-laki</td>
+                        </tr>
+                        <tr>
+                          <td><b>Tempat Lahir</b></td>
+                          <td> : </td>
+                          <td>Bogor</td>
+                        </tr>
+                        <tr>
+                          <td><b>Tanggal Lahir</b></td>
+                          <td> : </td>
+                          <td>08 Juli 1997</td>
+                        </tr>
+                        <tr>
+                          <td><b>Alamat Rumah</b></td>
+                          <td> : </td>
+                          <td>Jalan Melati 5 No. 24</td>
+                        </tr>
+                        <tr>
+                          <td><b>Nomor Telepon</b></td>
+                          <td> : </td>
+                          <td>081383126190</td>
+                        </tr>
+                        <tr>
+                          <td><b>Status</b></td>
+                          <td> : </td>
+                          <td>Wali Kelas</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
