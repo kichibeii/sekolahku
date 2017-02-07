@@ -39,7 +39,7 @@
 			$query3=mysqli_query($connect, "SELECT * FROM ajar WHERE id_ambil_siswa = '$id_as' AND id_ambil_guru='$id_ag' ");
 			$data3=mysqli_fetch_array($query3);
 			$id_ajar=$data3['id_ajar'];
-			echo $id_ajar;
+			
 				
 			$query5=mysqli_query($connect, "SELECT * FROM nilai WHERE id_ajar='$id_ajar'");
 	?>
@@ -75,9 +75,7 @@
 			$query3=mysqli_query($connect, "SELECT * FROM ajar WHERE id_ambil_siswa = '$id_as' AND id_ambil_guru='$id_ag' ");
 			$data3=mysqli_fetch_array($query3);
 			$id_ajar=$data3['id_ajar'];
-			echo $id_ajar;
-
-
+		
 			$query5=mysqli_query($connect, "SELECT * FROM nilai WHERE id_ajar='$id_ajar' AND jenis='H'");
 
 			$query6=mysqli_query($connect, "SELECT * FROM nilai WHERE id_ajar='$id_ajar' AND jenis='T'");

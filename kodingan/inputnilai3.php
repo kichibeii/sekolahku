@@ -29,9 +29,6 @@
 			$query1=mysqli_query($connect, "SELECT * FROM siswa WHERE id_kelas='$id_kelas'");
 			while($data1=mysqli_fetch_array($query1)){
 				$id_siswa=$data1['id_siswa'];
-				echo $id_siswa;
-				echo $id_mapel;
-				echo $id_ag;
 
 				$query2=mysqli_query($connect, "SELECT * FROM ambil_siswa WHERE id_siswa='$id_siswa' AND id_mapel='$id_mapel' AND status='0'");
 				$data2=mysqli_fetch_array($query2);
@@ -40,9 +37,6 @@
 				$query3=mysqli_query($connect, "SELECT * FROM ajar WHERE id_ambil_siswa = '$id_as' AND id_ambil_guru='$id_ag' ");
 				$data3=mysqli_fetch_array($query3);
 				$id_ajar=$data3['id_ajar'];
-				echo $id_ajar;
-				
-				
 		?>
 			<tr>
 				<td><?php echo $data1['nama_siswa']?></td>
