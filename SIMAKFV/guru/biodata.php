@@ -1,28 +1,3 @@
-<?php 
-  session_start();
-  $nis = $_SESSION['nis'];
-  include 'connect.php';
-  $query = mysqli_query($connect,"SELECT * FROM siswa WHERE nis = '$nis'");
-  $data = mysqli_fetch_array($query);
-  $id_siswa = $data['id_siswa'];
-  $tahun_sekarang = date("Y");
-  $bulan = date("m");
-  $perbedaan_tahun = $tahun_sekarang - $data['tahun_masuk'];
-  if ($perbedaan_tahun==0 && $bulan > 6){
-    $semester = 1;
-  }else if ($perbedaan_tahun==1 && $bulan <= 6){
-    $semester = 2;
-  }else if ($perbedaan_tahun==1 && $bulan > 6){
-    $semester = 3;
-  }else if ($perbedaan_tahun==2 && $bulan <= 6){
-    $semester = 4;
-  }else if ($perbedaan_tahun==2 && $bulan > 6){
-    $semester = 5;
-  }else if ($perbedaan_tahun==3 && $bulan <= 6){
-    $semester = 6;
-  }
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +79,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
-                <span><?php echo $data['nama_siswa'];?></span>
+                <span>Wawan Setyadi</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-down pull-right"></i>
                 </span>
@@ -114,13 +89,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-<<<<<<< HEAD
-                    <?php echo $data['nama_siswa'];?> - Siswa
-                    <small><?php echo $data['tahun_masuk'];?></small>
-=======
-                    Wawan Setyadi - Siswa
-                    <small>Angkatan</small>
->>>>>>> 9de91c9a999d5585a35289f3392bab069ddbed15
+                    Wawan Setyadi - Guru
+                    <small>Tahun Ajar</small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -143,17 +113,17 @@
             <img src="../dist/img/user.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p><?php echo $data['nama_siswa'];?></p>
-            <a href="#"><?php echo $data['nis'];?></a>
+            <p>Wawan Setyadi</p>
+            <a href="#">NIP</a>
           </div>
         </div>
         <!-- Sidebar menu -->
         <ul class="sidebar-menu">
           <li class="header">MENU UTAMA</li>
           <li><a href="index.php"><i class="fa fa-circle-o"></i> Beranda</a></li>
-          <li><a href="biodata.php"><i class="fa fa-circle-o"></i> Biodata</a></li>
-          <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Lihat Nilai</a></li>
-          <li><a href="rekap.php"><i class="fa fa-circle-o"></i> Rekapitulasi Studi</a></li>
+          <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Biodata</a></li>
+          <li><a href="nilai.php"><i class="fa fa-circle-o"></i> Lihat Nilai</a></li>
+          <li><a href="input.php"><i class="fa fa-circle-o"></i> Input Nilai</a></li>
         </ul>
       </section>
     </aside>
@@ -163,69 +133,71 @@
       <!-- Content Header -->
       <div class="header-section">
         <i class="glyphicon glyphicon-education pull-right"></i>
-        <h1>Lihat Nilai</h1>
+        <h1>Biodata Guru</h1>
       </div>
       <div class="bread-section">
-        <a href="index.php">SIMAK </a><span>> </span>Lihat Nilai
+        <a href="index.php">SIMAK </a><span>> </span>Biodata
       </div>
 
       <!-- Main content -->
       <section class="content">
         <div class="row">
           <section class="col-lg-12">
-            
-            <?php 
-                $query2 = mysqli_query($connect,"SELECT * FROM ambil_siswa WHERE id_siswa = '$id_siswa' AND semester = '$semester'");
-                while($data2=mysqli_fetch_array($query2)){
-                  $id_ambil_siswa = $data2['id_ambil_siswa'];
-                  $id_mapel  = $data2['id_mapel'];
-                  $query3=mysqli_query($connect,"SELECT * FROM mapel WHERE id_mapel = '$id_mapel'");
-                  $data3=mysqli_fetch_array($query3);
-            ?>
-            <!-- Tabel Nilai -->
+            <!-- Biodata -->
             <div class="box box-solid box-danger">
               <div class="box-header">
                 <i class="fa fa-user"></i>
-                <h3 class="box-title"><?php echo $data3['nama_mapel']; ?></h3>
+                <h3 class="box-title">Profil Guru</h3>
               </div>
               <div class="box-body">
-              <table class="table">
-                <thead>
-                <?php 
-                    $query4 = mysqli_query($connect,"SELECT * FROM ajar WHERE id_ambil_siswa = '$id_ambil_siswa' AND semester = '$semester'");
-                    $data4 = mysqli_fetch_array($query4);
-                    $id_ajar = $data4['id_ajar'];
-                    $query5 = mysqli_query($connect,"SELECT * FROM nilai WHERE id_ajar = '$id_ajar'");
-                    while ($data5=mysqli_fetch_array($query5)){
-                ?>
-                      <td><?php 
-                          if ($data5['jenis']=='H')
-                            echo "UH";
-                          else if ($data5['jenis']=='T')
-                            echo "UTS";
-                          else if ($data5['jenis']=='A')
-                      ?></td>       
-                 
-                 <?php } ?>
-                </thead>
-                <tr>
-                  <?php 
-                    $query4 = mysqli_query($connect,"SELECT * FROM ajar WHERE id_ambil_siswa = '$id_ambil_siswa' AND semester = '$semester'");
-                    $data4 = mysqli_fetch_array($query4);
-                    $id_ajar = $data4['id_ajar'];
-                    $query5 = mysqli_query($connect,"SELECT * FROM nilai WHERE id_ajar = '$id_ajar'");
-                    while ($data5=mysqli_fetch_array($query5)){
-                ?>
-                      <td><?php echo $data5['nilai'];?></td>       
-                 
-                 <?php } ?>
-                </tr>
-                 </table>
+                <div class="col-sm-12 col-lg-3 foto">
+                  <img src="../dist/img/user.png">
+                </div>
+                <div class="col-sm-12 col-lg-9">
+                  <div class="box box-danger">
+                    <div class="box-body">
+                      <table class="table table-striped">
+                        <tr>
+                          <td><b>Nama Guru</b></td>
+                          <td> : </td>
+                          <td>Wawan Setyadi</td>
+                        </tr>
+                        <tr>
+                          <td><b>Jenis Kelamin</b></td>
+                          <td> : </td>
+                          <td>Laki-laki</td>
+                        </tr>
+                        <tr>
+                          <td><b>Tempat Lahir</b></td>
+                          <td> : </td>
+                          <td>Bogor</td>
+                        </tr>
+                        <tr>
+                          <td><b>Tanggal Lahir</b></td>
+                          <td> : </td>
+                          <td>08 Juli 1997</td>
+                        </tr>
+                        <tr>
+                          <td><b>Alamat Rumah</b></td>
+                          <td> : </td>
+                          <td>Jalan Melati 5 No. 24</td>
+                        </tr>
+                        <tr>
+                          <td><b>Nomor Telepon</b></td>
+                          <td> : </td>
+                          <td>081383126190</td>
+                        </tr>
+                        <tr>
+                          <td><b>Status</b></td>
+                          <td> : </td>
+                          <td>Wali Kelas</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            
-            <?php }?>
-
           </section>
         </div>
       </section>

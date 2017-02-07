@@ -1,29 +1,23 @@
+<!DOCTYPE html>
 <?php 
-  session_start();
-  $nis = $_SESSION['nis'];
-  include 'connect.php';
-  $query = mysqli_query($connect,"SELECT * FROM siswa WHERE nis = '$nis'");
-  $data = mysqli_fetch_array($query);
-  $id_siswa = $data['id_siswa'];
-  $tahun_sekarang = date("Y");
-  $bulan = date("m");
-  $perbedaan_tahun = $tahun_sekarang - $data['tahun_masuk'];
-  if ($perbedaan_tahun==0 && $bulan > 6){
-    $semester = 1;
-  }else if ($perbedaan_tahun==1 && $bulan <= 6){
-    $semester = 2;
-  }else if ($perbedaan_tahun==1 && $bulan > 6){
-    $semester = 3;
-  }else if ($perbedaan_tahun==2 && $bulan <= 6){
-    $semester = 4;
-  }else if ($perbedaan_tahun==2 && $bulan > 6){
-    $semester = 5;
-  }else if ($perbedaan_tahun==3 && $bulan <= 6){
-    $semester = 6;
-  }
+    include '../connect.php'; 
+
+    if ($_SESSION['status'] != "guru") {
+      if ($_SESSION['status'] == "siswa") {
+        header('Location:../siswa/index.php');
+      }
+      else {
+        header('Location:../index.php');
+      }
+    }
+
+    $id_guru = $_SESSION['id'];
+    $query = mysqli_query($connect, "SELECT * FROM guru WHERE id_guru = '$id_guru'");
+    $result = mysqli_fetch_array($query);
+
+    $buffer=0;
 
 ?>
-<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -104,7 +98,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
-                <span><?php echo $data['nama_siswa'];?></span>
+                <span><?php echo $result['nama_guru']?></span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-down pull-right"></i>
                 </span>
@@ -114,13 +108,8 @@
                 <li class="user-header">
                   <img src="../dist/img/user.png" class="img-circle" alt="User Image">
                   <p>
-<<<<<<< HEAD
-                    <?php echo $data['nama_siswa'];?> - Siswa
-                    <small><?php echo $data['tahun_masuk'];?></small>
-=======
-                    Wawan Setyadi - Siswa
-                    <small>Angkatan</small>
->>>>>>> 9de91c9a999d5585a35289f3392bab069ddbed15
+                    <?php echo $result['nama_guru']?> - Guru
+                    <small><?php echo $result['nip']?></small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
@@ -143,8 +132,8 @@
             <img src="../dist/img/user.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p><?php echo $data['nama_siswa'];?></p>
-            <a href="#"><?php echo $data['nis'];?></a>
+            <p><?php echo $result['nama_guru']?></p>
+            <a href="#"><?php echo $result['nip']?></a>
           </div>
         </div>
         <!-- Sidebar menu -->
@@ -153,7 +142,7 @@
           <li><a href="index.php"><i class="fa fa-circle-o"></i> Beranda</a></li>
           <li><a href="biodata.php"><i class="fa fa-circle-o"></i> Biodata</a></li>
           <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Lihat Nilai</a></li>
-          <li><a href="rekap.php"><i class="fa fa-circle-o"></i> Rekapitulasi Studi</a></li>
+          <li><a href="input.php"><i class="fa fa-circle-o"></i> Input Nilai</a></li>
         </ul>
       </section>
     </aside>
@@ -163,69 +152,49 @@
       <!-- Content Header -->
       <div class="header-section">
         <i class="glyphicon glyphicon-education pull-right"></i>
-        <h1>Lihat Nilai</h1>
+        <h1>Filter Nilai</h1>
       </div>
       <div class="bread-section">
-        <a href="index.php">SIMAK </a><span>> </span>Lihat Nilai
+        <a href="index.php">SIMAK </a><span>> </span>Filter Nilai
       </div>
 
       <!-- Main content -->
       <section class="content">
         <div class="row">
           <section class="col-lg-12">
-            
-            <?php 
-                $query2 = mysqli_query($connect,"SELECT * FROM ambil_siswa WHERE id_siswa = '$id_siswa' AND semester = '$semester'");
-                while($data2=mysqli_fetch_array($query2)){
-                  $id_ambil_siswa = $data2['id_ambil_siswa'];
-                  $id_mapel  = $data2['id_mapel'];
-                  $query3=mysqli_query($connect,"SELECT * FROM mapel WHERE id_mapel = '$id_mapel'");
-                  $data3=mysqli_fetch_array($query3);
-            ?>
-            <!-- Tabel Nilai -->
+            <!-- Biodata -->
             <div class="box box-solid box-danger">
               <div class="box-header">
                 <i class="fa fa-user"></i>
-                <h3 class="box-title"><?php echo $data3['nama_mapel']; ?></h3>
+                <h3 class="box-title">Filter Nilai</h3>
               </div>
               <div class="box-body">
-              <table class="table">
-                <thead>
-                <?php 
-                    $query4 = mysqli_query($connect,"SELECT * FROM ajar WHERE id_ambil_siswa = '$id_ambil_siswa' AND semester = '$semester'");
-                    $data4 = mysqli_fetch_array($query4);
-                    $id_ajar = $data4['id_ajar'];
-                    $query5 = mysqli_query($connect,"SELECT * FROM nilai WHERE id_ajar = '$id_ajar'");
-                    while ($data5=mysqli_fetch_array($query5)){
-                ?>
-                      <td><?php 
-                          if ($data5['jenis']=='H')
-                            echo "UH";
-                          else if ($data5['jenis']=='T')
-                            echo "UTS";
-                          else if ($data5['jenis']=='A')
-                      ?></td>       
-                 
-                 <?php } ?>
-                </thead>
-                <tr>
-                  <?php 
-                    $query4 = mysqli_query($connect,"SELECT * FROM ajar WHERE id_ambil_siswa = '$id_ambil_siswa' AND semester = '$semester'");
-                    $data4 = mysqli_fetch_array($query4);
-                    $id_ajar = $data4['id_ajar'];
-                    $query5 = mysqli_query($connect,"SELECT * FROM nilai WHERE id_ajar = '$id_ajar'");
-                    while ($data5=mysqli_fetch_array($query5)){
-                ?>
-                      <td><?php echo $data5['nilai'];?></td>       
-                 
-                 <?php } ?>
-                </tr>
-                 </table>
+                Bikin form disini.
+                <form method="POST" action="lihatnilai.php">
+                  <select name="id_ag" required>
+                    <option disabled selected value="">Mata Pelajaran</option>
+                    <?php 
+
+                      $query1=mysqli_query($connect,"SELECT * FROM ambil_guru WHERE id_guru = '$id_guru'");
+                      while ($data1=mysqli_fetch_array($query1)){
+                        $id_mapel=$data1['id_mapel'];
+                        if($id_mapel==$buffer){
+                          continue;
+                        }
+                        $query2=mysqli_query($connect, "SELECT * FROM mapel WHERE id_mapel='$id_mapel'");
+                        $data2=mysqli_fetch_array($query2);
+                    ?>
+                    <option value="<?php echo $data1['id_ambil_guru'] ?>"><?php echo $data2['nama_mapel']?></option>
+                    <?php
+                        $buffer=$id_mapel;
+                        }
+                    ?>
+                  </select><br>
+                  
+                  <input type="submit" name="" value="NEXT">
+                  </form>
               </div>
             </div>
-            
-            <?php }?>
-
           </section>
         </div>
       </section>
